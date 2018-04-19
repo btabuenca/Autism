@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- Id -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Id"
+            android:layout_weight="1"
+            android:gravity="end" />
+        <TextView
+            android:id="@+id/txtId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
+    </LinearLayout>
+
+    <!-- Nombre -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nombre"
+            android:layout_weight="1"
+            android:gravity="end" />
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
+    </LinearLayout>
+
+    <!-- Nacionalidad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nacionalidad"
+            android:layout_weight="1"
+            android:gravity="end" />
+        <TextView
+            android:id="@+id/txtNacionalidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
+    </LinearLayout>
+
+    <!-- Descripcion  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Anotaciones"
+            android:layout_weight="1"
+            android:gravity="end" />
+        <EditText
+            android:id="@+id/txDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:hint="Anotaciones personales"/>
+    </LinearLayout>
+
+    <!-- Imagen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Imagen"
+            android:layout_weight="1"
+            android:gravity="end" />
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_weight="3">
+            <ImageView
+                android:id="@+id/imagePlayer"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="start" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:onClick="Guardar"/>
+</LinearLayout>

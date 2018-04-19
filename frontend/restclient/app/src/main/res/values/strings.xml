@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">restclient</string>
+    <string name="button_update">Obtener pictogramas</string>
+</resources>
