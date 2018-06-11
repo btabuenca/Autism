@@ -1,59 +1,81 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
 package com.example.user.restclient;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by User on 28/10/2017.
- */
-
 public class Pictogram {
 
-    private String image_path;
-    private String nationality;
-    private String common_name;
-    private int id;
-    private String details;
+
+    private int pictogram_id;
+    private String pictogram_name;
+    private String pictogram_description;
+    private String category_name;
+    private String pictogram_img;
+    private String pictogram_sound;
+
     public Pictogram() {
-
     }
 
-    public Pictogram(int id , String details, String image_path , String nationality , String common_name ){
-        id = id;
-        details = details;
-        image_path = image_path;
-        nationality = nationality;
-        common_name = common_name;
+    public Pictogram(int pictogram_id, String pictogram_name, String pictogram_description, String category_name, String pictogram_img, String pictogram_sound) {
+        this.pictogram_id = pictogram_id;
+        this.pictogram_name = pictogram_name;
+        this.pictogram_description = pictogram_description;
+        this.category_name = category_name;
+        this.pictogram_img = pictogram_img;
+        this.pictogram_sound = pictogram_sound;
     }
 
-
-    public int getId(){ return this.id;}
-    public void setId(int id){
-        this.id = id;
-    }
-    public String getdetails(){ return this.details;}
-    public void setdetails(String details){
-        this.details= details;
-    }
-    public String getCommon_name() {
-        return this.common_name;
-    }
-    public void setCommon_name(String common_name) {
-        this.common_name = common_name;
+    public int getPictogram_id() {
+        return pictogram_id;
     }
 
-    public String getNationality() {
-        return this.nationality;
-    }
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
+    public void setPictogram_id(int pictogram_id) {
+        this.pictogram_id = pictogram_id;
     }
 
-    public String getImage_path() {
-        return this.image_path;
+    public String getPictogram_name() {
+        return pictogram_name;
     }
-    public void setImage_path(String image_path) {
-        this.image_path = image_path;
+
+    public void setPictogram_name(String pictogram_name) {
+        this.pictogram_name = pictogram_name;
     }
+
+    public String getPictogram_description() {
+        return pictogram_description;
+    }
+
+    public void setPictogram_description(String pictogram_description) {
+        this.pictogram_description = pictogram_description;
+    }
+
+    public String getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
+    }
+
+    public String getPictogram_img() {
+        return pictogram_img;
+    }
+
+    public void setPictogram_img(String pictogram_img) {
+        this.pictogram_img = pictogram_img;
+    }
+
+    public String getPictogram_sound() {
+        return pictogram_sound;
+    }
+
+    public void setPictogram_sound(String pictogram_sound) {
+        this.pictogram_sound = pictogram_sound;
+    }
+
 
 }

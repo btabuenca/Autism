@@ -1,3 +1,7 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
 package com.example.user.restclient;
 
 import android.content.Intent;
@@ -7,8 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.user.restclient.R;
-import com.example.user.restclient.models.PlayerModel;
+import com.example.user.restclient.models.*;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,9 +23,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
 
-    EditText numeroJugadres;
-    //private static final String URL_API = "http://arasaac.perentec.com/API/V1";
-    private static final String URL_API = "https://soccer.sportmonks.com";
+    EditText etNumPictograms;
+    private static final String URL_API = "http://arasaac.perentec.com";
 
     private PictogramAPIRESTService apiService;
 
@@ -30,55 +32,65 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        numeroJugadres = (EditText) findViewById(R.id.numeroJugadores);
+        etNumPictograms = (EditText) findViewById(R.id.numPictograms);
 
     }
 
 
-    public void verJugadores(View v){
+    public void showPictograms(View v){
         Intent intent = new Intent(this, PictogramListActivity.class);
         startActivity(intent);
 
     }
 
 
-    public void obtenerDatos(View v){
+    public void getRestWSData(View v){
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL_API)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         apiService = retrofit.create(PictogramAPIRESTService.class);
-        int cuantos = Integer.parseInt(numeroJugadres.getText().toString());
-        consulta(cuantos);
 
-    }
 
-    public  void consulta(int cuantos){
+        int iNumItems = Integer.parseInt(etNumPictograms.getText().toString());
 
-        for (int i = 1;i<=cuantos;i++) {
-            Call<PlayerModel> call_async = apiService.getPlayerById(Integer.toString(i));
 
-            call_async.enqueue(new Callback<PlayerModel>() {
+        /**
+         * Obtains items from 1 to the id passed as parameter
+         */
+        for (int i = 1;i<=iNumItems;i++) {
+            Call<PictogramModel> call_async = apiService.getPictogramById(Integer.toString(i));
+
+            call_async.enqueue(new Callback<PictogramModel>() {
                 @Override
-                public void onResponse(Call<PlayerModel> call, Response<PlayerModel> response) {
-                    PlayerModel player = response.body();
+                public void onResponse(Call<PictogramModel> call, Response<PictogramModel> response) {
+                    PictogramModel pictoModel = response.body();
                     PictogramRepository pictoRepository = new PictogramRepository(getApplicationContext());
                     Pictogram picto = new Pictogram();
-                    if (null != player) {
-                        picto.setId(player.getData().getPlayerId());
-                        picto.setCommon_name(player.getData().getCommonName());
-                        picto.setImage_path(player.getData().getImagePath());
-                        picto.setNationality(player.getData().getNationality());
-                        picto.setdetails("");
+                    if (null != pictoModel) {
+
+                        Data data = (Data)pictoModel.getData().get(0);
+                        picto.setPictogram_id(data.getPictogramId());
+                        picto.setPictogram_name(data.getPictogramName());
+                        picto.setPictogram_description(data.getPictogramDescription());
+
                         pictoRepository.add(picto);
                     }
                     pictoRepository.close();
 
                 }
 
+
+
                 @Override
-                public void onFailure(Call<PlayerModel> call, Throwable t) {
+                public void onFailure(Call<PictogramModel> call, Throwable t) {
+
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Somehting failed!",
+                            Toast.LENGTH_LONG
+                    ).show();
 
 
                 }
@@ -87,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         }
         Toast.makeText(
                 getApplicationContext(),
-                "Pictogramas cargados con exito",
+                "Pictogramas loaded succuessfully!",
                 Toast.LENGTH_LONG
         ).show();
 

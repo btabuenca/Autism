@@ -1,3 +1,8 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
+
 package com.example.user.restclient;
 
 import android.content.ContentProvider;
@@ -11,9 +16,6 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-/**
- * Created by User on 01/11/2017.
- */
 
 public class PictogramProvider extends ContentProvider {
     private Context context;
@@ -52,7 +54,7 @@ public class PictogramProvider extends ContentProvider {
         String where = "";
         switch (uriMatcher.match(uri)) {
             case ID_URI_PLAYER_UNICO:  // URI termina en /#
-                where = PictogramContract.tablaPlayer.COL_NAME_ID +" = ?";
+                where = PictogramContract.tablePictograms.COL_PICTOGRAM_ID +" = ?";
                 selectionArgs = new String[1];
                 selectionArgs[0] = uri.getLastPathSegment();
                 break;
@@ -64,7 +66,7 @@ public class PictogramProvider extends ContentProvider {
 
         SQLiteDatabase db = pictogram_repository.getReadableDatabase();
         Cursor cursor = db.query(
-                PictogramContract.tablaPlayer.TABLE_NAME,
+                PictogramContract.tablePictograms.TABLE_NAME,
                 projection,
                 where,
                 selectionArgs,
@@ -85,7 +87,7 @@ public class PictogramProvider extends ContentProvider {
         }
 
         SQLiteDatabase db = pictogram_repository.getWritableDatabase();
-        numFilasAfectadas = db.update(PictogramContract.tablaPlayer.TABLE_NAME, values, where, selectionArgs);
+        numFilasAfectadas = db.update(PictogramContract.tablePictograms.TABLE_NAME, values, where, selectionArgs);
 
         return numFilasAfectadas;
     }
@@ -100,7 +102,7 @@ public class PictogramProvider extends ContentProvider {
         }
 
         SQLiteDatabase db = pictogram_repository.getWritableDatabase();
-        numFilasAfectadas = db.delete(PictogramContract.tablaPlayer.TABLE_NAME, where, selectionArgs);
+        numFilasAfectadas = db.delete(PictogramContract.tablePictograms.TABLE_NAME, where, selectionArgs);
 
         return numFilasAfectadas;
     }
@@ -111,7 +113,7 @@ public class PictogramProvider extends ContentProvider {
         long regId;
 
         SQLiteDatabase db = pictogram_repository.getWritableDatabase();
-        regId = db.insert(PictogramContract.tablaPlayer.TABLE_NAME, null, values);
+        regId = db.insert(PictogramContract.tablePictograms.TABLE_NAME, null, values);
 
         @SuppressWarnings("UnnecessaryLocalVariable")
         Uri nuevoURI = ContentUris.withAppendedId(CONTENT_URI, regId);

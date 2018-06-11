@@ -17,7 +17,7 @@
 -->
 
         </LinearLayout>
-        <ListView android:id="@+id/listaJugadores" android:layout_width="match_parent"
+        <ListView android:id="@+id/listaPictogramas" android:layout_width="match_parent"
             android:layout_height="437dp" />
 
     <Button

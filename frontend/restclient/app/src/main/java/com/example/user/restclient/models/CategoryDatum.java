@@ -1,7 +1,11 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
 
-        package com.example.user.restclient.models;
+package com.example.user.restclient.models;
 
-        import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.Expose;
         import com.google.gson.annotations.SerializedName;
 
 public class CategoryDatum {

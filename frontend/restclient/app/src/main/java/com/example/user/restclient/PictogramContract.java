@@ -1,23 +1,27 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
+
 package com.example.user.restclient;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by User on 28/10/2017.
- */
 
 public class PictogramContract {
 
     private PictogramContract(){}
 
-    public static abstract class tablaPlayer implements BaseColumns {
-        public static final String TABLE_NAME = "player";
+    public static abstract class tablePictograms implements BaseColumns {
+        public static final String TABLE_NAME = "pictograms";
 
-        public static String COL_NAME_ID = _ID;
-        public static String COL_NAME_IMAGE_PATH = "image_path";
-        public static String COL_NAME_NATIONALITY = "nationality";
-        public static String COL_NAME_COMMON_NAME = "common_name";
-        public static String COL_NAME_DETAILS = "details";
+        public static String COL_PICTOGRAM_ID = _ID;
+        public static String COL_PICTOGRAM_NAME = "pictogram_name";
+        public static String COL_PICTOGRAM_DESCRIPTION = "pictogram_description";
+        public static String COL_PICTOGRAM_CATEGORYNAME = "category_name";
+        public static String COL_PICTOGRAM_IMG = "pictogram_img";
+        public static String COL_PICTOGRAM_SOUND = "pictogram_sound";
+
 
     }
 }

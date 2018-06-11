@@ -8,11 +8,11 @@
     tools:ignore="RtlHardcoded">
 
     <EditText
-        android:id="@+id/numeroJugadores"
+        android:id="@+id/numPictograms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Numero de pictogramas" />
 
     <LinearLayout
@@ -25,13 +25,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Obtener Pictogramas"
-            android:onClick="obtenerDatos"/>
+            android:onClick="getRestWSData"/>
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ver Pictogramas"
-            android:onClick="verJugadores"/>
+            android:onClick="showPictograms"/>
 
 
     </LinearLayout>

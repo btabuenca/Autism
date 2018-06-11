@@ -1,24 +1,37 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
 
 package com.example.user.restclient.models;
 
+import com.example.user.restclient.models.Data;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Pictogram {
+public class PictogramModel {
 
     @SerializedName("Error")
     @Expose
     private Boolean error;
+
+
     @SerializedName("Code")
     @Expose
     private String code;
+
+
     @SerializedName("Message")
     @Expose
     private String message;
+
+
     @SerializedName("Data")
     @Expose
-    private List<PictogramDatum> data = null;
+    private List<Data> data = null;
+
+
 
     public Boolean getError() {
         return error;
@@ -44,11 +57,11 @@ public class Pictogram {
         this.message = message;
     }
 
-    public List<PictogramDatum> getData() {
+    public List<Data> getData() {
         return data;
     }
 
-    public void setData(List<PictogramDatum> data) {
+    public void setData(List<Data> data) {
         this.data = data;
     }
 
