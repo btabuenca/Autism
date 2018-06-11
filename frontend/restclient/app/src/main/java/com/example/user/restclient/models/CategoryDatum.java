@@ -1,4 +1,3 @@
------------------------------------com.example.user.restclient.models.Datum.java-----------------------------------
 
         package com.example.user.restclient.models;
 

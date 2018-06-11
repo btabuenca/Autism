@@ -1,4 +1,3 @@
------------------------------------com.example.user.restclient.models.Category.java-----------------------------------
 package com.example.user.restclient.models;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class Category {
     private String message;
     @SerializedName("Data")
     @Expose
-    private List<Datum> data = null;
+    private List<CategoryDatum> data = null;
 
     public Boolean getError() {
         return error;
@@ -44,11 +43,11 @@ public class Category {
         this.message = message;
     }
 
-    public List<Datum> getData() {
+    public List<CategoryDatum> getData() {
         return data;
     }
 
-    public void setData(List<Datum> data) {
+    public void setData(List<CategoryDatum> data) {
         this.data = data;
     }
 
