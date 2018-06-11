@@ -1,3 +1,8 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
+
 package com.example.user.appinstance;
 
 import android.content.ContentResolver;
@@ -17,26 +22,31 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String CONTENT_URI = "content://com.example.user.restclient.provider/player";
-    private ArrayList<Pictogram> arrayJugadores = new ArrayList<>();
+    private static final String CONTENT_URI = "content://com.example.user.restclient.provider/pictogram";
+    private ArrayList<Pictogram> arrayPictogramas = new ArrayList<>();
     private ListView lvJugadores ;
+
     // Proyección: columnas de la tabla a recuperar
     private static String[] PROJECTION = new String[] {
             "_id",
-            "image_path",
-            "nationality",
-            "details",
-            "common_name",
+            "pictogram_name",
+            "pictogram_description",
+            "category_name",
+            "pictogram_img",
+            "pictogram_sound"
     };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lvJugadores = (ListView) findViewById(R.id.listaJugadores);
+        lvJugadores = (ListView) findViewById(R.id.listaPictogramas);
         cargaJugadores(null);
 
         PictogramArrayAdapter adapter;
-        adapter = new PictogramArrayAdapter(this,R.layout.elementos, arrayJugadores);
+        adapter = new PictogramArrayAdapter(this,R.layout.elementos, arrayPictogramas);
         lvJugadores.setAdapter(adapter);
 
         lvJugadores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -47,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 int numJugador = Integer.parseInt(tvId.getText().toString())-1;
 
                 Intent intent = new Intent(MainActivity.this, DisplayPictogramActivity.class);
-                Comunicator.setObjeto(arrayJugadores.get(numJugador));
+                Comunicator.setObjeto(arrayPictogramas.get(numJugador));
                 startActivity(intent);
-                arrayJugadores = new ArrayList<>();
+                arrayPictogramas = new ArrayList<>();
                 cargaJugadores(null);
             }
         });
@@ -79,23 +89,25 @@ public class MainActivity extends AppCompatActivity {
 
             // índices de las columnas
             int colId       = cursor.getColumnIndex(PROJECTION[0]);
-            int colCommon_name   = cursor.getColumnIndex(PROJECTION[4]);
-            int colimage_Path    = cursor.getColumnIndex(PROJECTION[1]);
-            int colDetails = cursor.getColumnIndex(PROJECTION[3]);
-            int colnationality = cursor.getColumnIndex(PROJECTION[2]);
-
+            int colName   = cursor.getColumnIndex(PROJECTION[1]);
+            int colDescription = cursor.getColumnIndex(PROJECTION[2]);
+            int colCategoryName = cursor.getColumnIndex(PROJECTION[3]);
+            int colImg    = cursor.getColumnIndex(PROJECTION[4]);
+            int colSound    = cursor.getColumnIndex(PROJECTION[5]);
+            int colDetails = cursor.getColumnIndex(PROJECTION[6]);
 
 
             // se recuperan y muestran los resultados recuperados en el cursor
             while (cursor.moveToNext()) {
-                Pictogram player = new Pictogram();
-                player.setId(cursor.getInt(colId));
-                player.setCommon_name(cursor.getString(colCommon_name));
-                player.setImage_path(cursor.getString(colimage_Path));
-                player.setNationality(cursor.getString(colnationality));
-                player.setdetails(cursor.getString(colDetails));
-                arrayJugadores.add(player);
-                player = null;
+                Pictogram pic = new Pictogram();
+                pic.setId(cursor.getInt(colId));
+                pic.setPictogram_name(cursor.getString(colName));
+                pic.setPictogram_description(cursor.getString(colDescription));
+                pic.setCategory_name(cursor.getString(colCategoryName));
+                pic.setPictogram_img(cursor.getString(colImg));
+                pic.setDetails(cursor.getString(colDetails));
+                arrayPictogramas.add(pic);
+                pic = null;
             }
             cursor.close();
         } else {

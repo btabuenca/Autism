@@ -1,8 +1,8 @@
-package com.example.user.appinstance;
-
 /**
- * Created by User on 03/11/2017.
+ * Author: Bernardo Tabuenca
+ *
  */
+package com.example.user.appinstance;
 
 public class Comunicator {
     private static Pictogram obj;

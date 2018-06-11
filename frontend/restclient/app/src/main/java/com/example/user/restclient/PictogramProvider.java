@@ -21,8 +21,8 @@ public class PictogramProvider extends ContentProvider {
     private Context context;
     private static final String AUTHORITY =
             PictogramProvider.class.getPackage().getName() + ".provider";
-    private static final String ENTITY = "player";
-   private static final String uri ="content://com.example.user.api_sport_adrian_rodriguez.provider/player";
+    private static final String ENTITY = "pictogram";
+   private static final String uri ="content://com.example.user.api_sport_adrian_rodriguez.provider/pictogram";
     private static final Uri CONTENT_URI = Uri.parse(uri);
 
     // Tipos de URI accesibles

@@ -13,7 +13,7 @@ public class PictogramContract {
     private PictogramContract(){}
 
     public static abstract class tablePictograms implements BaseColumns {
-        public static final String TABLE_NAME = "pictograms";
+        public static final String TABLE_NAME = "pictogram";
 
         public static String COL_PICTOGRAM_ID = _ID;
         public static String COL_PICTOGRAM_NAME = "pictogram_name";

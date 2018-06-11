@@ -1,3 +1,8 @@
+/**
+ * Author: Bernardo Tabuenca
+ *
+ */
+
 package com.example.user.appinstance;
 
 import android.content.Context;
@@ -12,9 +17,6 @@ import java.util.ArrayList;
 
 import com.squareup.picasso.Picasso;
 
-/**
- * Created by User on 30/10/2017.
- */
 
 public class PictogramArrayAdapter extends ArrayAdapter {
     private Context context;
@@ -39,14 +41,14 @@ public class PictogramArrayAdapter extends ArrayAdapter {
         tvId.setText(Integer.toString(datos.get(position).getId()));
 
         TextView tvPu = (TextView) item.findViewById(R.id.txtName);
-        tvPu.setText(datos.get(position).getCommon_name());
+        tvPu.setText(datos.get(position).getPictogram_name());
 
-        TextView tvJu = (TextView) item.findViewById(R.id.txtNacionalidad);
-        tvJu.setText(datos.get(position).getNationality());
+        TextView tvJu = (TextView) item.findViewById(R.id.txtDescription);
+        tvJu.setText(datos.get(position).getPictogram_description());
 
-        ImageView imagePlayer = (ImageView) item.findViewById(R.id.imagePlayer);
+        ImageView imagePlayer = (ImageView) item.findViewById(R.id.imagePictogram);
         Picasso.with(context).
-                load(datos.get(position).getImage_path()).
+                load(datos.get(position).getPictogram_img()).
                 resize(75,75).into(imagePlayer);
 
         // Devolvemos la vista para que se muestre en el ListView.

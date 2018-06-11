@@ -19,14 +19,14 @@
         android:layout_height="match_parent"/>
 
     <TextView
-        android:id="@+id/txtNacionalidad"
+        android:id="@+id/txtDescription"
         android:layout_width="0dp"
         android:layout_weight="5"
         android:gravity="center"
         android:layout_height="match_parent"/>
 
     <ImageView
-        android:id="@+id/imagePlayer"
+        android:id="@+id/imagePictogram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
