@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lvJugadores = (ListView) findViewById(R.id.listaPictogramas);
-        cargaJugadores(null);
+        cargaPictogramas(null);
 
         PictogramArrayAdapter adapter;
         adapter = new PictogramArrayAdapter(this,R.layout.elementos, arrayPictogramas);
@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 Comunicator.setObjeto(arrayPictogramas.get(numJugador));
                 startActivity(intent);
                 arrayPictogramas = new ArrayList<>();
-                cargaJugadores(null);
+                cargaPictogramas(null);
             }
         });
     }
 
-    void cargaJugadores(View view){
+    void cargaPictogramas(View view){
 
         String recurso = CONTENT_URI ;
         Uri uriContenido =  Uri.parse(recurso);
